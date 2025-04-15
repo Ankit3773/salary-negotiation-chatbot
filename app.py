@@ -22,11 +22,9 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Display previous messages
-for message in st.session_state.chat_history:
-    if message.role == "user":
-        st.markdown(f"🧑‍💼 **You:** {message.parts[0].text}", unsafe_allow_html=True)
-    else:
-        st.markdown(f"🤖 **Bot:** {message.parts[0].text}", unsafe_allow_html=True)
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
 # User input
 user_input = st.chat_input("Ask me about salary negotiation...")
