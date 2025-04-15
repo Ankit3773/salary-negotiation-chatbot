@@ -1,12 +1,15 @@
 import streamlit as st
-import os
 import google.generativeai as genai
+import os
 
-# Load API key from secrets
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+# Set your Gemini API key from Streamlit secrets
+os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
 
-# Load the Gemini model
-model = genai.GenerativeModel(model_name='gemini-pro')
+# Configure Gemini
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+# Initialize the Gemini 2.0 model
+model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
 
 # Page config
 st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
