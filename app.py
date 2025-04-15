@@ -1,64 +1,40 @@
 import streamlit as st
 import google.generativeai as genai
+import os
 
-# Set Streamlit page config
-st.set_page_config(
-    page_title="💼 Salary Negotiation Chatbot",
-    page_icon="💼",
-    layout="centered"
-)
+# Set your Gemini API key from Streamlit secrets
+os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
 
-# Custom CSS for cleaner look
-st.markdown("""
-    <style>
-    .message {
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-    }
-    .user {
-        background-color: #1f2937;
-        color: white;
-    }
-    .bot {
-        background-color: #2d3748;
-        color: #ffebcd;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# Gemini API config
 # Configure Gemini
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Initialize the Gemini 2.0 model
 model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
 
-# App title
-st.title("💼 Salary Negotiation Chatbot")
-st.subheader("💬 Ask me anything about negotiating your salary!")
+# Page config
+st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
+st.title("Ankit kumar Aayush kumar 💼 Salary Negotiation Chatbot")
+st.markdown("Ask me anything about negotiating your salary!")
+st.success("👋 Welcome! Ask me anything about salary negotiations. Let's boost your paycheck!")
 
-# Initialize chat history
+# Store chat history in session
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display messages
+# Display previous messages
 for msg in st.session_state.messages:
-    with st.container():
-        if msg["role"] == "user":
-            st.markdown(f'<div class="message user">👤 {msg["content"]}</div>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="message bot">🤖 {msg["content"]}</div>', unsafe_allow_html=True)
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
-# Chat input
-prompt = st.chat_input("Ask me about salary negotiation...")
+# User input
+user_input = st.chat_input("Ask me about salary negotiation...")
+if user_input:
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.markdown(user_input)
 
-if prompt:
-    st.session_state.messages.append({"role": "user", "content": prompt})
-
-    # Gemini response
-    response = model.generate_content(prompt)
-    bot_reply = response.text
-
-    st.session_state.messages.append({"role": "bot", "content": bot_reply})
-    st.experimental_rerun()
+    with st.chat_message("assistant"):
+        response = model.generate_content(user_input)
+        reply = response.text
+        st.markdown(reply)
+        st.session_state.messages.append({"role": "assistant", "content": reply})
