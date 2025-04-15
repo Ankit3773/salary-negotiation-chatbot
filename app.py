@@ -13,7 +13,7 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
 
 # Page config
 st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
-st.title("💼 Salary Negotiation Chatbot")
+st.title("ANKIT KUMAR 12319407💼 Salary Negotiation Chatbot")
 st.markdown("Ask me anything about negotiating your salary!")
 
 # Store chat history in session
