@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import google.generativeai as genai
 
 # Load API key from secrets
