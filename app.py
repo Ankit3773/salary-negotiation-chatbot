@@ -6,7 +6,7 @@ import google.generativeai as genai
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 # Load the Gemini model
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel(model_name='gemini-pro')
 
 # Page config
 st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
