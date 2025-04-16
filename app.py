@@ -13,7 +13,7 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
 
 # Page config
 st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
-st.title("Ankit kumar 💼 Salary Negotiation Chatbot")
+st.title("Ankit kumar Aayush kumar 💼 Salary Negotiation Chatbot")
 st.markdown("Ask me anything about negotiating your salary!")
 st.success("👋 Welcome! Ask me anything about salary negotiations. Let's boost your paycheck!")
 
@@ -38,7 +38,3 @@ if user_input:
         reply = response.text
         st.markdown(reply)
         st.session_state.messages.append({"role": "assistant", "content": reply})
-    bot_reply = response.text
-
-    st.session_state.messages.append({"role": "bot", "content": bot_reply})
-    st.experimental_rerun()
