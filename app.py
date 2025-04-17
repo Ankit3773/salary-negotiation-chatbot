@@ -45,7 +45,15 @@ if user_input:
         st.markdown(user_input)
 
     with st.chat_message("assistant"):
-        response = model.generate_content(user_input)
-        reply = response.text
-        st.markdown(reply)
-        st.session_state.messages.append({"role": "assistant", "content": reply})
+       # Keywords related to salary negotiation
+keywords = ["salary", "negotiation", "offer", "counter", "pay", "package", "hike", "compensation"]
+
+# Check if user input is relevant
+if any(keyword in user_input.lower() for keyword in keywords):
+    response = model.generate_content(user_input)
+    reply = response.text
+else:
+    reply = "❌ Sorry, I can only help with salary negotiation-related questions."
+
+st.markdown(reply)
+st.session_state.messages.append({"role": "assistant", "content": reply})
