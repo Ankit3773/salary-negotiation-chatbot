@@ -10,7 +10,7 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Initialize the Gemini 2.0 model
 model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
-
+st.markdown("#### 👨‍🎓 Ankit Kumar (12319407) | Aayush Kumar (12319413)")
 # Page config
 st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
 st.title("💼 Salary Negotiation Chatbot")
@@ -18,7 +18,7 @@ st.markdown("Ask me anything about negotiating your salary!")
 st.success("👋 Welcome! Ask me anything about salary negotiations. Let's boost your paycheck!")
 
 # 👨‍🎓 Student Info Header
-st.markdown("#### 👨‍🎓 Ankit Kumar (12319407) | Aayush Kumar (12319413)")
+
 
 # Store chat history in session
 if "messages" not in st.session_state:
