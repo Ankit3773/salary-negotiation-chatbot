@@ -13,7 +13,20 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
 
 # Page config
 st.set_page_config(page_title="Salary Negotiation Chatbot", page_icon="💼")
-st.title("Ankit kumar Aayush kumar 💼 Salary Negotiation Chatbot")
+
+# 👇 Custom Header
+st.markdown(
+    """
+    <div style='text-align: center; padding: 10px; border-bottom: 2px solid #ddd;'>
+        <h3>ANKIT KUMAR - 12319407</h3>
+        <h3>AAYUSH KUMAR - 12319413</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# App title and intro
+st.title("💼 Salary Negotiation Chatbot")
 st.markdown("Ask me anything about negotiating your salary!")
 st.success("👋 Welcome! Ask me anything about salary negotiations. Let's boost your paycheck!")
 
