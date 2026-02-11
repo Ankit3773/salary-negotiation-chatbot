@@ -18,8 +18,8 @@ st.set_page_config(page_title="AI Custom Meal Plan Generator", page_icon="🥗")
 st.markdown(
     """
     <div style='text-align: center; padding: 10px; border-bottom: 2px solid #ddd;'>
-        <h3>ANKIT RAj - 12319449</h3>
-        <h3>AMITABH KAUSHIK- 12319369</h3>
+        <h3>ANKIT KUMAR - 12319407</h3>
+       
     </div>
     """,
     unsafe_allow_html=True
