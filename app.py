@@ -26,8 +26,8 @@ st.markdown(
 )
 
 # App title and intro
-st.title("🥗 AI Custom Meal Plan Generator")
-st.markdown("Ask me anything about Meal Plan!")
+st.title("👨🏻‍💻 Salary Negotiation ChatBot")
+st.markdown("Ask me anything about Salary!")
 st.success("👋 !")
 
 # Store chat history in session
