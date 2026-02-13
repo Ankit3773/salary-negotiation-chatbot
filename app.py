@@ -12,7 +12,7 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
 
 # Page config
-st.set_page_config(page_title="AI Custom Meal Plan Generator", page_icon="🥗")
+st.set_page_config(page_title="Salary Negotiation ChatBot", page_icon="👨🏻‍💻")
 
 # 👇 Custom Header
 st.markdown(
