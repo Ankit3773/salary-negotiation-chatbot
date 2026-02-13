@@ -1,15 +1,22 @@
 import streamlit as st
-import google.generativeai as genai
-import os
+from groq import Groq
 
-# Set your Gemini API key from Streamlit secrets
-os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
-# Configure Gemini
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+st.title("Salary Negotiation ChatBot")
 
-# Initialize the Gemini 2.0 model
-model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
+user_input = st.text_input("Ask your negotiation question:")
+
+if user_input:
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {"role": "system", "content": "You are a professional salary negotiation coach for tech placements in India."},
+            {"role": "user", "content": user_input}
+        ],
+        model="llama3-8b-8192",
+    )
+
+    st.write(chat_completion.choices[0].message.content)
 
 # Page config
 st.set_page_config(page_title="Salary Negotiation ChatBot", page_icon="👨🏻‍💻")
